@@ -2,9 +2,10 @@ var Util = {};
 
 Util.makeItReady = function() {
   //hide the lower p, hide about and prep filters
-  $('.aboutme').hide();
+  $('.aboutMe').hide();
   $('article').show();
-  $('.body p:not(:first-child)').hide();
+  $('article p:not(:first-child)').hide();
+  $('.readOn').show();
 };
 
 Util.handleNavClick = function(eventarg) {
