@@ -33,6 +33,7 @@ blog.makeNewIndex = function (){
   for(var j = 1; j < blog.rawData.length; j++) {
     blog.artIndex[j] = new BloggedArticle(blog.rawData[j]);
   }
+  //Thanks to Miranda !!
   blog.artIndex.sort(function(a,b){
     if(a.displayRelativeDate < b.displayRelativeDate) {
       return 1;

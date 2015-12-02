@@ -1,0 +1,11 @@
+p {
+  color: #9999FF;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 1px;
+}
+
+h1, h2, h3 {
+  style: strong;
+  color: FF9999;
+}
