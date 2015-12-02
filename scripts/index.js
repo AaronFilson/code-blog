@@ -13,6 +13,18 @@ $('nav').on('click', function(event) {
   if (event.target.className == 'home') {
     Util.makeItReady();
   }
+  if (event.target.className == 'filterByAuthor') {
+    var selectedAuthor = event.target.value;
+    Util.filterArticles(selectedAuthor);
+    //reset category filter
+    $('.filterByCategory').value('');
+  }
+  if(event.target.className == 'filterByCategory') {
+    var selectedCategory = event.target.value;
+    Util.filterArticles(selectedCategory);
+    //reset author filter
+    $('.filterByAuthor').value('');
+  }
 });
 
 $('article').on('click', '.readOn', function(event) {

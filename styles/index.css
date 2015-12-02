@@ -1,11 +1,16 @@
 p {
-  color: #9999FF;
-  border: 1px solid black;
-  border-radius: 3px;
+  color: #7799FF;
   padding: 1px;
 }
 
 h1, h2, h3 {
   style: strong;
   color: FF9999;
+  font-family: cursive Times serif;
+}
+
+article {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 1px;
 }

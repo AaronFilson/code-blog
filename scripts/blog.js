@@ -19,6 +19,7 @@ blog.toHTML = function() {
     var $tempVar = blog.$myTemplate;
     $tempVar.find('.author').text(blog.artIndex[i].author);
     $tempVar.find('.authorUrl').attr('href', blog.artIndex[i].authorUrl);
+    $tempVar.find('.category').text('Category: ' + blog.artIndex[i].category);
     $tempVar.find('.title').text(blog.artIndex[i].artTitle);
     $tempVar.find('.body').html(blog.artIndex[i].artBody);
     $tempVar.find('.publishedOn').text(blog.artIndex[i].displayRelativeDate);
