@@ -14,3 +14,7 @@ article {
   border-radius: 3px;
   padding: 1px;
 }
+
+img {
+  max-width: 100%;
+}

@@ -17,13 +17,13 @@ $('nav').on('click', function(event) {
     var selectedAuthor = event.target.value;
     Util.filterArticles(selectedAuthor);
     //reset category filter
-    $('.filterByCategory').value('');
+    $('.filterByCategory:first-child').attr('selected', 'selected');
   }
   if(event.target.className == 'filterByCategory') {
     var selectedCategory = event.target.value;
     Util.filterArticles(selectedCategory);
     //reset author filter
-    $('.filterByAuthor').value('');
+    $('.filterByAuthor:first-child').attr('selected', 'selected');
   }
 });
 
