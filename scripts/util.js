@@ -15,10 +15,14 @@ Util.atLoadFunction = function() {
 };
 
 Util.filterArticles = function(filterValue) {
-  //show all articles so we have filter selected articles shown
+  //hide all articles so we have filter selected articles shown
   $('article').hide();
-  //Take the filterValue and use hide on not the filter articles
-  $('article:contains("' + filterValue + '")').show().slideDown();
+  //Take the filterValue and use show to give reader a selected view
+  $('.author:contains("' + filterValue + '"), .category:contains("' + filterValue + '")')
+  .parentsUntil('div').show().slideDown();
+  //the above looks for the filterValue in either author or category classes
+  //and then gets the article level of the element, and runs the show as a
+  //slideDown
 };
 
 Util.createFilterMenus = function(currentArticles) {
@@ -74,17 +78,17 @@ Util.holdNavclicks = $('nav').change(function(event) {
   if (event.target.className == 'home') {
     Util.makeItReady();
   }
-  if (event.target.className == 'filterByAuthor') {
-    var selectedAuthor = event.target.value;
-    Util.filterArticles(selectedAuthor);
-    //reset category filter
-    $('.filterByCategory:first-child').attr('selected', 'selected');
-  }
-  if(event.target.className == 'filterByCategory') {
-    var selectedCategory = event.target.value;
-    Util.filterArticles(selectedCategory);
+  // if (event.target.className == 'filterByAuthor') {
+  //   var selectedAuthor = event.target.value;
+  //   Util.filterArticles(selectedAuthor);
+  //   //reset category filter
+  //}
+  if((event.target.className == 'filterByCategory') || (event.target.className == 'filterByAuthor')) {
+    //var selectedCategory = event.target.value;
+    //Util.filterArticles(selectedCategory);
+    Util.filterArticles(event.target.value);
     //reset author filter
-    $('.filterByAuthor:first-child').attr('selected', 'selected');
+
   }
 });
 
