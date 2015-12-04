@@ -3,32 +3,26 @@ blog.toHTML();
 
 $( Util.atLoadFunction );
 
-//register clicks on nav
-$('nav').on('click', function(event) {
-  event.preventDefault();
-  if(event.target.className == 'aboutMeNav') {
-    $('.aboutMe').show();
-    $('article').hide();
-  }
-  if (event.target.className == 'home') {
-    Util.makeItReady();
-  }
-  if (event.target.className == 'filterByAuthor') {
-    var selectedAuthor = event.target.value;
-    Util.filterArticles(selectedAuthor);
-    //reset category filter
-    $('.filterByCategory:first-child').attr('selected', 'selected');
-  }
-  if(event.target.className == 'filterByCategory') {
-    var selectedCategory = event.target.value;
-    Util.filterArticles(selectedCategory);
-    //reset author filter
-    $('.filterByAuthor:first-child').attr('selected', 'selected');
+$('nav').change(function(myEvent) {
+  myEvent.preventDefault();
+
+  if((myEvent.target.className == 'filterByCategory') || (myEvent.target.className == 'filterByAuthor')) {
+    Util.filterArticles(myEvent.target.value);
   }
 });
 
-$('article').on('click', '.readOn', function(event) {
-  event.preventDefault();
+$('.readOn').on('click', function(clickEvent) {
+  clickEvent.preventDefault();
   $(this).parent().find('p').show().slideDown();
   $(this).hide();
+});
+
+$('nav').on('click', function(myEvent) {
+  if(myEvent.target.className == 'aboutMeNav') {
+    $('.aboutMe').show();
+    $('article').hide();
+  }
+  if (myEvent.target.className == 'home') {
+    Util.makeItReady();
+  }
 });

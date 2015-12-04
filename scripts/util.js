@@ -21,8 +21,8 @@ Util.filterArticles = function(filterValue) {
   $('.author:contains("' + filterValue + '"), .category:contains("' + filterValue + '")')
   .parentsUntil('div').show().slideDown();
   //the above looks for the filterValue in either author or category classes
-  //and then gets the article level of the element, and runs the show as a
-  //slideDown
+  //and then gets the article level of the element, and runs slideDown
+
 };
 
 Util.createFilterMenus = function(currentArticles) {
@@ -59,41 +59,35 @@ Util.createFilterMenus = function(currentArticles) {
   }
 
   //now we have the unique values for the authors and categories, make the menu
-  for(var a = 0; a < authMenu.length; a++){
+  authMenu.unshift('<option>Filter By Author</option>');
+  catMenu.unshift('<option>Filter By Category</option>');
+  for(var a = 1; a < authMenu.length; a++){
     authMenu[a] = '<option value="' + authMenu[a] + '">' + authMenu[a] + '</option>';
   }
-  for(var b = 0; b < catMenu.length; b++) {
+  for(var b = 1; b < catMenu.length; b++) {
     catMenu[b] = '<option value="' + catMenu[b] + '">' + catMenu[b] + '</option>';
   }
+
   $('.filterByAuthor').append().html(authMenu);
   $('.filterByCategory').append().html(catMenu);
 };
 
-Util.holdNavclicks = $('nav').change(function(event) {
-  event.preventDefault();
-  if(event.target.className == 'aboutMeNav') {
+$('nav').change(function(myEvent) {
+  myEvent.preventDefault();
+  if(myEvent.target.className == 'aboutMeNav') {
     $('.aboutMe').show();
     $('article').hide();
   }
-  if (event.target.className == 'home') {
+  if (myEvent.target.className == 'home') {
     Util.makeItReady();
   }
-  // if (event.target.className == 'filterByAuthor') {
-  //   var selectedAuthor = event.target.value;
-  //   Util.filterArticles(selectedAuthor);
-  //   //reset category filter
-  //}
-  if((event.target.className == 'filterByCategory') || (event.target.className == 'filterByAuthor')) {
-    //var selectedCategory = event.target.value;
-    //Util.filterArticles(selectedCategory);
-    Util.filterArticles(event.target.value);
-    //reset author filter
-
+  if((myEvent.target.className == 'filterByCategory') || (myEvent.target.className == 'filterByAuthor')) {
+    Util.filterArticles(myEvent.target.value);
   }
 });
 
-Util.holdReadOnClicks = $('article').on('click', '.readOn', function(event) {
-  event.preventDefault();
+$('.readOn').on('click', function(clickEvent) {
+  clickEvent.preventDefault();
   $(this).parent().find('p').show().slideDown();
   $(this).hide();
 });
