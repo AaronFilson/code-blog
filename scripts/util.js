@@ -17,6 +17,7 @@ Util.atLoadFunction = function() {
 Util.filterArticles = function(filterValue) {
   //hide all articles so we have filter selected articles shown
   $('article').hide();
+  $('.aboutMe').hide();
   //Take the filterValue and use show to give reader a selected view
   $('.author:contains("' + filterValue + '"), .category:contains("' + filterValue + '")')
   .parentsUntil('div').show().slideDown();
@@ -71,23 +72,3 @@ Util.createFilterMenus = function(currentArticles) {
   $('.filterByAuthor').append().html(authMenu);
   $('.filterByCategory').append().html(catMenu);
 };
-
-$('nav').change(function(myEvent) {
-  myEvent.preventDefault();
-  if(myEvent.target.className == 'aboutMeNav') {
-    $('.aboutMe').show();
-    $('article').hide();
-  }
-  if (myEvent.target.className == 'home') {
-    Util.makeItReady();
-  }
-  if((myEvent.target.className == 'filterByCategory') || (myEvent.target.className == 'filterByAuthor')) {
-    Util.filterArticles(myEvent.target.value);
-  }
-});
-
-$('.readOn').on('click', function(clickEvent) {
-  clickEvent.preventDefault();
-  $(this).parent().find('p').show().slideDown();
-  $(this).hide();
-});
