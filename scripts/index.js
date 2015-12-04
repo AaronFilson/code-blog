@@ -5,7 +5,7 @@ $( Util.atLoadFunction );
 
 $('nav').change(function(myEvent) {
   myEvent.preventDefault();
-
+  $('select:not(.' + myEvent.target.className + ')').find('option:first').attr('selected', true);
   if((myEvent.target.className == 'filterByCategory') || (myEvent.target.className == 'filterByAuthor')) {
     Util.filterArticles(myEvent.target.value);
   }
