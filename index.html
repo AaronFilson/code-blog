@@ -1,4 +1,4 @@
-<!-- CF 301d1 Class 01 Code Blog, by Aaron Filson -->
+<!-- CF 301d1 Class 02 Code Blog, by Aaron Filson -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +15,13 @@
 			<div class="row">
 				<div class="ten">
 					<h1>Welcome to my blog.</h1>
-					<nav>Nav info goes here:
-							<a>Stub link</a>
+					<nav>
+						<p><a href='#' class='home'>Home</a></p>
+						<p><a href='#' class='aboutMeNav'>About</a></p>
+						<p><a href="https://twitter.com/AaronFilson">My twitter page!</a></p>
+						<p><a href="https://github.com/AaronFilson">My github page</a></p>
+						<select name="Filter by Author" class="filterByAuthor"></select>
+						<select name="Filter by Category" class="filterByCategory"></select>
 					</nav>
 				</div>
 			</div>
@@ -26,30 +31,42 @@
 	<main>
 		<div class="container">
 			<div class="row">
-				<div class="ten" id="blogColumn">
+				<div class="one column">
+				</div>
+				<div class="ten columns" id="blogColumn">
 					<article id="original">
 						<h2 class="title">My first blog post!</h2>
 						<p>by <a class="authorUrl" href="http://aaronfilsonceramics.com"><span class="author">Aaron Filson</span></a>, published about <span class="publishedOn">90</span> days ago.
 						</p>
+						<p class='category'>firstpost!</p>
 						<section class="body">
 							<p>I am starting this blog to write about my restart on coding and thinking in code. More to follow!</p>
 							<p>-Cheers</p>
 						</section>
-
+						<a href='' class="readOn">Read On</a>
 					</article>
+
+					<section class='aboutMe'>
+						<p>Hello everyone! I am the author of the blog you are reading, and wanted to use this
+							section to share some information about myself with you, the reader. I am a Web Developer
+							working on my skills and knowledge at Code Fellows. I hope to work on big projects! Cheers,</p>
+						<p>-Aaron</p>
+					</section>
+				</div>
+				<div class="one column">
 				</div>
 			</div>
 		</div>
 	</main>
 
 	<footer>
-		<p>My twitter page! :</p>
-		<a href="https://twitter.com/AaronFilson">@AaronFilson</a>
+
 	</footer>
 
-<script src="scripts/jquery-1.11.3.js"></script>
+<script src="scripts/jquery-2.1.4.js"></script>
 <script src="scripts/blog.js"></script>
 <script src="scripts/blogArticles.js"></script>
+<script src="scripts/util.js"></script>
 <script src="scripts/index.js"></script>
 
 </body>
