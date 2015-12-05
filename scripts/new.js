@@ -8,39 +8,47 @@ var PreviewArticle = function(prev){
   this.authorUrl = prev.authorUrl;
 };
 
-PreviewArticle.prototype.toHTML = function() {
-  var source = $("#previewtemplate").html();
+PreviewArticle.prototype.toHTML = function(tagTarget) {
+  var source = $('#previewtemplate').html();
   var template = Handlebars.compile(source);
   var result = template(this);
-  $('#previewSection').html(result);
+  $(tagTarget).html(result);
 };
 
-var store = function() {
-  $('button').on('click', function(event) {
-    event.preventDefault();
-    var formInfo = {
-      author: $('input[name=author]').val(),
-      authorUrl: $('input[name=authorURL]').val(),
-      title: $('input[name=title]').val(),
-      category: $('input[name=category]').val(),
-      date: $('input[name=publishedOn]').val(),
-      body: $('textarea[name=body]').val(),
-    };
-  });
+PreviewArticle.prototype.toPlainText = function (textTarget) {
+  var source = $('#textTemplate').html();
+  var template = Handlebars.compile(source);
+  var result = template(this);
+
+  $(textTarget).html(result);
 };
+
+var getFormData = function () {
+  var grabber = {
+    author: $('input[name=author]').val(),
+    authorUrl: $('input[name=authorUrl]').val(),
+    title: $('input[name=title]').val(),
+    category: $('input[name=category]').val(),
+    date: $('input[name=publishedOn]').val(),
+    body: $('textarea[name=body]').val()
+  };
+  return (grabber);
+};
+
+$('button').on('click', function(event) {
+  event.preventDefault();
+  var formClick = getFormData();
+  console.log(formClick);
+  var temp2 = new PreviewArticle(formClick);
+  temp2.toPlainText('#submitArea');
+  // $('#submitArea').html(JSON.stringify(temp2));
+});
 
 $('form').change(function(){
   event.preventDefault();
-  var formInfo = {
-    author: $('input[name=author]').val(),
-    authorUrl: $('input[name=authorURL]').val(),
-    title: $('input[name=title]').val(),
-    category: $('input[name=category]').val(),
-    publishedOn: $('input[name=publishedOn]').val(),
-    body: $('textarea[name=body]').val(),
-  };
-  var temp = new PreviewArticle(formInfo);
-  temp.toHTML();
+  var formPreview = getFormData();
+  var temp = new PreviewArticle(formPreview);
+  temp.toHTML('#previewSection');
 });
 
 $('input[name=preview]').on('click', function(){
