@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="styles/skeleton.css">
+    <link rel="stylesheet" type="text/css" href="styles/new.css">
+
+    <title>New Post</title>
+    <script id="previewtemplate" type="text/x-handlebars-template">
+        <article class="previewpost" data-author={{authorSlug}} data-category={{category}}>
+          <h2>{{title}}</h2>
+          <h1>{{author}}</h1>
+          <h3 class="publishdate">{{publishedOn}}</h3>
+          <div class="post">{{{body}}}</div>
+          <a href="#" class="read-more">Read More...</a>
+          <h3 class="category">{{category}}</h3>
+        </article>
+    </script>
+    <script id="textTemplate" type="text/x-handlebars-template">
+        <p>title: {{title}}</p>
+        <p>category: {{category}}</p>
+        <p>author: {{author}}</p>
+        <p>authorUrl: {{authorUrl}}</p>
+        <p>publishedOn: {{publishedOn}}</p>
+        <section>body: {{{body}}}</section>
+    </script>
+  </head>
+  <body>
+    <h1>Write a new blog</h1>
+    <form>
+      <div class="row">
+        <div class="six columns">
+          Author: <input type='text' name='author'>
+          Author URL: <input type='text' name='authorUrl'>
+        </div>
+        <div class="six columns">
+          Title: <input type='text' name='title'>
+          Category: <input type='text' name='category'>
+        </div>
+      </div>
+      <div class="row">
+        <div class="u-full-width">
+          Post: <textarea name='body' row='6' cols='30'>
+          </textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="u-full-width">
+          Date: <input type='date' name='publishedOn'>
+          Preview: <input type='checkbox' name='preview'>
+          <button class='click'>Submit</button>
+        </div>
+      </div>
+    </form>
+
+    <div id="previewSection"></div>
+
+    <div id="submitArea"></div>
+
+    <script src="scripts/jquery-2.1.4.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+    <script src='scripts/new.js'></script>
+  </body>
+</html>

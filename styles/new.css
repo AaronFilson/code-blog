@@ -1,0 +1,24 @@
+p {
+  color: #7799FF;
+  padding: 1px;
+}
+
+h1, h2, h3 {
+  style: strong;
+  color: FF9999;
+  font-family: cursive Times serif;
+}
+
+article {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 1px;
+}
+
+img {
+  max-width: 100%;
+}
+
+form {
+  padding: 5px;
+}

@@ -1,27 +1,23 @@
-<!-- CF 301d1 Class 02 Code Blog, by Aaron Filson -->
+<!-- CF 301d1 Class 05 Code Blog, by Aaron Filson -->
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Code Blog</title>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- add handlebars.js -->
 
 	<link rel="stylesheet" type="text/css" href="styles/normalize.css">
 	<link rel="stylesheet" type="text/css" href="styles/skeleton.css">
 	<link rel="stylesheet" type="text/css" href="styles/index.css">
 
-	<title>Code Blog</title>
-
-	<!-- template goes here -->
-	<script type="text/x-handlebars-template">
-
-			<h2 class="title">My first blog post!</h2>
-			<p>by <a class="authorUrl" href="http://aaronfilsonceramics.com"><span class="author">Aaron Filson</span></a>, published about <span class="publishedOn">90</span> days ago.
-			</p>
-			<p class='category'>firstpost!</p>
-			<section class="body">
-				<p>I am starting this blog to write about my restart on coding and thinking in code. More to follow!</p>
-				<p>-Cheers</p>
-			</section>
+	<script id='blogTemplate' type="text/x-handlebars-template">
+		<article>
+			<h2 class="title">{{title}}</h2>
+			<p>by <a class="authorUrl" href={{{authorUrl}}}>
+				<span class="author">{{author}}</span>
+			</a>, published about <span class="publishedOn">{{displayRelativeDate}}</span> days ago.</p>
+			<p class='category'>{{category}}</p>
+			<section class="body">{{{body}}}</section>
 			<a href='' class="readOn">Read On</a>
 		</article>
 	</script>
@@ -52,8 +48,7 @@
 				<div class="one column">
 				</div>
 				<div class="ten columns" id="blogColumn">
-					<article id="original">
-
+					<section id='targetArticle'></section>
 					<section class='aboutMe'>
 						<p>Hello everyone! I am the author of the blog you are reading, and wanted to use this
 							section to share some information about myself with you, the reader. I am a Web Developer
@@ -67,15 +62,15 @@
 		</div>
 	</main>
 
-	<footer>
+	<footer></footer>
 
-	</footer>
-
-<script src="scripts/jquery-2.1.4.js"></script>
-<script src="scripts/blog.js"></script>
-<script src="scripts/blogArticles.js"></script>
-<script src="scripts/util.js"></script>
-<script src="scripts/index.js"></script>
+	<script src="scripts/jquery-2.1.4.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+	<script src="scripts/blog.js"></script>
+	<script src="scripts/blogArticles.js"></script>
+	<script src="scripts/util.js"></script>
+	<script src='scripts/new.js'></script>
+	<script src="scripts/index.js"></script>
 
 </body>
 </html>
