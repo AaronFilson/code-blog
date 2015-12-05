@@ -3,12 +3,28 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- add handlebars.js -->
 
 	<link rel="stylesheet" type="text/css" href="styles/normalize.css">
 	<link rel="stylesheet" type="text/css" href="styles/skeleton.css">
 	<link rel="stylesheet" type="text/css" href="styles/index.css">
 
 	<title>Code Blog</title>
+
+	<!-- template goes here -->
+	<script type="text/x-handlebars-template">
+
+			<h2 class="title">My first blog post!</h2>
+			<p>by <a class="authorUrl" href="http://aaronfilsonceramics.com"><span class="author">Aaron Filson</span></a>, published about <span class="publishedOn">90</span> days ago.
+			</p>
+			<p class='category'>firstpost!</p>
+			<section class="body">
+				<p>I am starting this blog to write about my restart on coding and thinking in code. More to follow!</p>
+				<p>-Cheers</p>
+			</section>
+			<a href='' class="readOn">Read On</a>
+		</article>
+	</script>
 </head>
 <body>
 
@@ -37,16 +53,6 @@
 				</div>
 				<div class="ten columns" id="blogColumn">
 					<article id="original">
-						<h2 class="title">My first blog post!</h2>
-						<p>by <a class="authorUrl" href="http://aaronfilsonceramics.com"><span class="author">Aaron Filson</span></a>, published about <span class="publishedOn">90</span> days ago.
-						</p>
-						<p class='category'>firstpost!</p>
-						<section class="body">
-							<p>I am starting this blog to write about my restart on coding and thinking in code. More to follow!</p>
-							<p>-Cheers</p>
-						</section>
-						<a href='' class="readOn">Read On</a>
-					</article>
 
 					<section class='aboutMe'>
 						<p>Hello everyone! I am the author of the blog you are reading, and wanted to use this
