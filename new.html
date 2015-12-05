@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New Post</title>
+    <script id="previewtemplate" type="text/x-handlebars-template">
+        <article class="previewpost" data-author={{authorSlug}} data-category={{category}}>
+          <h2>{{title}}</h2>
+          <h1>{{author}}</h1>
+          <h3 class="publishdate">{{publishedOn}}</h3>
+          <div class="post">{{{body}}}</div>
+          <!-- <a href="#" class="read-more">Read More...</a> -->
+          <h3 class="category">{{category}}</h3>
+        </article>
+    </script>
+  </head>
+  <body>
+    <form>
+      Author: <input type='text' name='author'>
+      Author URL: <input type='text' name='authorurl'>
+      Title: <input type='text' name='title'>
+      Category: <input type='text' name='category'>
+      Date: <input type='date' name='publishedOn'>
+      Post: <textarea name='body' row='6' cols='30'>
+      </textarea>
+      Preview: <input type='checkbox' name='preview'>
+      <button type='submit'>Submit</button>
+    </form>
+
+    <div id="previewSection"></div>
+
+    <script src="scripts/jquery-2.1.4.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+    <script src='scripts/new.js'></script>
+  </body>
+</html>
