@@ -1,12 +1,12 @@
 var blog = new Object();
 
 var BloggedArticle = function(rawObj) {
-  this.artTitle = rawObj.title;
+  this.title = rawObj.title;
   this.category = rawObj.category;
   this.author = rawObj.author;
   this.authorUrl = rawObj.authorUrl;
   this.publishedOn = rawObj.publishedOn;
-  this.artBody = rawObj.body;
+  this.body = rawObj.body;
 
   //assisted by https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Calculating_elapsed_time
   var objDatePub = new Date(this.publishedOn);
@@ -14,17 +14,11 @@ var BloggedArticle = function(rawObj) {
 };
 
 blog.toHTML = function() {
-  for(var i = 0; i < blog.artIndex.length; i++) {
-    blog.$myTemplate = $('#original').clone().removeAttr('id');
-    var $tempVar = blog.$myTemplate;
-    $tempVar.find('.author').text(blog.artIndex[i].author);
-    $tempVar.find('.authorUrl').attr('href', blog.artIndex[i].authorUrl);
-    $tempVar.find('.category').text('Category: ' + blog.artIndex[i].category);
-    $tempVar.find('.title').text(blog.artIndex[i].artTitle);
-    $tempVar.find('.body').html(blog.artIndex[i].artBody);
-    $tempVar.find('.publishedOn').text(blog.artIndex[i].displayRelativeDate);
-
-    $('#blogColumn').prepend($tempVar);
+  for (var i = 0; i < blog.artIndex.length; i++) {
+    var source = $('#blogTemplate').html();
+    var template = Handlebars.compile(source);
+    var result = template(this.artIndex[i]);
+    $(result).prependTo('#targetArticle');
   }
 };
 
