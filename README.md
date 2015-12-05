@@ -3,9 +3,6 @@ CF 301d1 Code blog assignment
 
 Authored by Aaron Filson
 
-<<<<<<< HEAD
-Here is the assignment ver4:
-=======
 Here is the assignment ver5:
 Now that you have a blog where your articles can be read, let's create a nice interface for writing new articles.
 
@@ -38,4 +35,3 @@ Helpful Resources
 
 HTML -> Markdown conversion: https://github.com/chjj/marked
 Syntax highlighting: https://github.com/isagalaev/highlight.js
->>>>>>> 127daaa9565a67d596499ce2f9ba06a5f542f43a
