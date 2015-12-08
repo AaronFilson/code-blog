@@ -3,35 +3,33 @@ CF 301d1 Code blog assignment
 
 Authored by Aaron Filson
 
-Here is the assignment ver5:
-Now that you have a blog where your articles can be read, let's create a nice interface for writing new articles.
+Here is the assignment ver6:
+Assignment for Class 6 - AJAX and JSON
+Asynchronous connections and standardized data formats? Persistent storage for each client? This all sounds like a serious upgrade to our application logic! Let's see what we can do with our app, once we apply these concepts.
 
-We'll use a special html page, not linked from the main page, that will allow you to write a new article, and export it into the JSON format that the blogging system supports.
-
-This is a paired assignment
-
-Work in pairs. Pick a driver and a navigator to start.
-Add a new feature to the navigator's repo.
-Switch off as each major feature is completed.
-The new driver now implements the same feature on new navigator's repo.
-Teach each other about what unique approaches you took in your own code base.
 User Stories
 
-As an author, I want a secret URL where I can go write articles, so that blog visitors don't think they can create posts.
-As an author, I want a form fields for all the article properties, so that I can customize each aspect of my article.
-As an author, I want to write in Markdown, so that I can easily control formatting.
-As an author, I want a live preview of how my post looks, so that I know if I screw up the markdown.
-As an author, I want code samples to have syntax highlighting, so that my readers see code as it should appear.
-As an author, I want an export of the final article, so that I can paste it into blogArticles.js to publish it.
+As a developer, I want to use the same template for Articles, so that I don't have to update it in 2 places.
+As a reader, I only want to download all the blog posts if there are changes, so that the page is faster and everyone saves bandwidth.
+As a reader, I want the site to have good typography, so that it's easy on the eyes.
+Bonus Stories (2 point each)
+
+As a reader, I want the app to remember what tab I'm on, so that if I refresh, I'm not lost.
+As an author, I want the data in the New Article form to survive a refresh, so that if I go away and come back, my draft is still there.
 Technical Requirements and Grading Rubric
 
-Keep your CSS code organized according to SMACSS.
-Continue to use mobile-first development practices.
-Use the same template code to preview the draft article.
-Verify that your exported data can be copy/pasted into blogArticles.js to be published.
-Integrate libraries to help with markdown and syntax highlighting.
-Bonus points if the new article page is responsive!
-Helpful Resources
+Continue to follow good SMACSS principles.
+Be sure to use the correct jQuery method for each AJAX call.
+Be thoughtful when functions are executed asynchronously. This is a major source of bugs!
+Keep a local cache of article data. Ensure you are only requesting the full blogArticles.json file when you need an update.
+Log to the console on every cache hit and cache miss.
+Lecture Slides
 
-HTML -> Markdown conversion: https://github.com/chjj/marked
-Syntax highlighting: https://github.com/isagalaev/highlight.js
+Typography
+Useful Resources
+
+Google Fonts
+Treehouse: Web Typography Course
+Pracital Topography Site
+A More Modern Scale for Web Typography via typecast.com
+Type Scale Tool via type-scale.com
