@@ -2,7 +2,8 @@ var PreviewArticle = function(prev){
   this.author = prev.author;
   this.authorSlug = prev.author.replace(/\ /g, '');
   this.title = prev.title;
-  this.body = prev.body;
+  this.markdown = marked(prev.markdown);
+  this.body = prev.body || this.markdown;
   this.category = prev.category;
   this.publishedOn = prev.publishedOn;
   this.authorUrl = prev.authorUrl;
@@ -23,30 +24,31 @@ PreviewArticle.prototype.toPlainText = function (textTarget) {
   $(textTarget).html(result);
 };
 
-var getFormData = function () {
+var newUtil = {};
+newUtil.getFormData = function () {
   var grabber = {
     author: $('input[name=author]').val(),
     authorUrl: $('input[name=authorUrl]').val(),
     title: $('input[name=title]').val(),
     category: $('input[name=category]').val(),
-    date: $('input[name=publishedOn]').val(),
-    body: $('textarea[name=body]').val()
+    publishedOn: $('input[name=publishedOn]').val(),
+    body: $('textarea[name=body]').val(),
+    markdown: $('textarea[name=markdown]').val()
   };
   return (grabber);
 };
 
+//event handler section
 $('button').on('click', function(event) {
   event.preventDefault();
-  var formClick = getFormData();
-  console.log(formClick);
+  var formClick = newUtil.getFormData();
   var temp2 = new PreviewArticle(formClick);
   temp2.toPlainText('#submitArea');
-  // $('#submitArea').html(JSON.stringify(temp2));
 });
 
 $('form').change(function(){
   event.preventDefault();
-  var formPreview = getFormData();
+  var formPreview = newUtil.getFormData();
   var temp = new PreviewArticle(formPreview);
   temp.toHTML('#previewSection');
 });

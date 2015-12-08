@@ -14,8 +14,7 @@
           <h2>{{title}}</h2>
           <h1>{{author}}</h1>
           <h3 class="publishdate">{{publishedOn}}</h3>
-          <div class="post">{{{body}}}</div>
-          <a href="#" class="read-more">Read More...</a>
+          <div class="post">{{{markdown}}}</div>
           <h3 class="category">{{category}}</h3>
         </article>
     </script>
@@ -25,7 +24,7 @@
         <p>author: {{author}}</p>
         <p>authorUrl: {{authorUrl}}</p>
         <p>publishedOn: {{publishedOn}}</p>
-        <section>body: {{{body}}}</section>
+        <section>body: {{{markdown}}}</section>
     </script>
   </head>
   <body>
@@ -43,7 +42,7 @@
       </div>
       <div class="row">
         <div class="u-full-width">
-          Post: <textarea name='body' row='6' cols='30'>
+          Post: <textarea name='markdown' row='6' cols='30'>
           </textarea>
         </div>
       </div>
@@ -62,8 +61,8 @@
 
     <script src="vendor/scripts/jquery-2.1.4.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js'></script>
-    <script src='scripts/new.js'></script>
     <script src="vendor/scripts/marked.js"></script>
     <script src="vendor/scripts/highlight.pack.js"></script>
-  </body>
+    <script src='scripts/new.js'></script>
+      </body>
 </html>

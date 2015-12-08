@@ -6,7 +6,8 @@ var BloggedArticle = function(rawObj) {
   this.author = rawObj.author;
   this.authorUrl = rawObj.authorUrl;
   this.publishedOn = rawObj.publishedOn;
-  this.body = rawObj.body;
+  this.markdown = marked(rawObj.markdown);
+  this.body = rawObj.body || this.markdown; //taken from lecture code
 
   //assisted by https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Calculating_elapsed_time
   var objDatePub = new Date(this.publishedOn);
