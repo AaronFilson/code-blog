@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" type="text/css" href="vendor/styles/default.css">
     <link rel="stylesheet" type="text/css" href="styles/normalize.css">
     <link rel="stylesheet" type="text/css" href="styles/skeleton.css">
     <link rel="stylesheet" type="text/css" href="styles/new.css">
@@ -14,8 +14,7 @@
           <h2>{{title}}</h2>
           <h1>{{author}}</h1>
           <h3 class="publishdate">{{publishedOn}}</h3>
-          <div class="post">{{{body}}}</div>
-          <a href="#" class="read-more">Read More...</a>
+          <div class="post">{{{markdown}}}</div>
           <h3 class="category">{{category}}</h3>
         </article>
     </script>
@@ -25,7 +24,7 @@
         <p>author: {{author}}</p>
         <p>authorUrl: {{authorUrl}}</p>
         <p>publishedOn: {{publishedOn}}</p>
-        <section>body: {{{body}}}</section>
+        <section>body: {{{markdown}}}</section>
     </script>
   </head>
   <body>
@@ -43,15 +42,15 @@
       </div>
       <div class="row">
         <div class="u-full-width">
-          Post: <textarea name='body' row='6' cols='30'>
+          Post: <textarea name='markdown' row='6' cols='30'>
           </textarea>
         </div>
       </div>
       <div class="row">
         <div class="u-full-width">
           Date: <input type='date' name='publishedOn'>
-          Preview: <input type='checkbox' name='preview'>
-          <button class='click'>Submit</button>
+          Preview: <input type='checkbox' name='preview' checked='true'>
+          <button class="click button-primary">Submit</button>
         </div>
       </div>
     </form>
@@ -60,10 +59,10 @@
 
     <div id="submitArea"></div>
 
-    <script src="scripts/jquery-2.1.4.js"></script>
+    <script src="vendor/scripts/jquery-2.1.4.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+    <script src="vendor/scripts/marked.js"></script>
+    <script src="vendor/scripts/highlight.pack.js"></script>
     <script src='scripts/new.js'></script>
-  </body>
+      </body>
 </html>
