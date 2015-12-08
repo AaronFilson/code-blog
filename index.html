@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/skeleton.css">
 	<link rel="stylesheet" type="text/css" href="styles/index.css">
 
+
 	<script id='blogTemplate' type="text/x-handlebars-template">
 		<article>
 			<h2 class="title">{{title}}</h2>
@@ -27,9 +28,10 @@
 	<header>
 		<div class="container">
 			<div class="row">
-				<div class="ten">
+				<div class="u-full-width">
 					<h1>Welcome to my blog.</h1>
 					<nav>
+						<p>icon</p>
 						<p><a href='#' class='home'>Home</a></p>
 						<p><a href='#' class='aboutMeNav'>About</a></p>
 						<p><a href="https://twitter.com/AaronFilson">My twitter page!</a></p>
@@ -45,9 +47,7 @@
 	<main>
 		<div class="container">
 			<div class="row">
-				<div class="one column">
-				</div>
-				<div class="ten columns" id="blogColumn">
+				<div class="u-full-width" id="blogColumn">
 					<section id='targetArticle'></section>
 					<section class='aboutMe'>
 						<p>Hello everyone! I am the author of the blog you are reading, and wanted to use this
@@ -56,16 +56,16 @@
 						<p>-Aaron</p>
 					</section>
 				</div>
-				<div class="one column">
-				</div>
 			</div>
 		</div>
 	</main>
 
 	<footer></footer>
 
-	<script src="scripts/jquery-2.1.4.js"></script>
+	<script src="vendor/scripts/jquery-2.1.4.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+	<script src='vendor/scripts/marked.js'></script>
+	<script src='vendor/scripts/highlight.pack.js'></script>
 	<script src="scripts/blog.js"></script>
 	<script src="scripts/blogArticles.js"></script>
 	<script src="scripts/util.js"></script>
