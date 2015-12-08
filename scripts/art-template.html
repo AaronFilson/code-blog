@@ -1,11 +1,14 @@
-<script id='blogTemplate' type="text/x-handlebars-template">
-  <article>
-    <h2 class="title">{{title}}</h2>
-    <p>by <a class="authorUrl" href={{{authorUrl}}}>
-      <span class="author">{{author}}</span>
-    </a>, published about <span class="publishedOn">{{displayRelativeDate}}</span> days ago.</p>
-    <p class='category'>{{category}}</p>
-    <section class="body">{{{body}}}</section>
-    <a href='' class="readOn">Read On</a>
-  </article>
+<script type='text/x-handlebars-template'>
+  <div class='row'>
+    <div class='u-full-width'>
+      <article class='previewpost'>
+        <h2 class='title'>{{title}}</h2>
+        <p>by <a class='authorUrl' href={{{authorUrl}}}>
+          <span class='author'>{{author}}</span>
+        </a>, published about <span class='publishedOn'>{{displayRelativeDate}}</span> days ago.</p>
+        <p class='category'>{{category}}</p>
+        <section class='body'>{{{markdown}}}</section>
+      </article>
+    </div>
+  </div>
 </script>

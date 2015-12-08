@@ -1,27 +1,23 @@
 var PreviewArticle = function(prev){
   this.author = prev.author;
-  //this.authorSlug = prev.author.replace(/\ /g, '');
+  this.authorSlug = prev.author.replace(/\ /g, '');
   this.title = prev.title;
-  if(prev.markdown){
-    this.markdown = marked(prev.markdown);
-  }
-  if(prev.body){
-    this.body = prev.body;
-  }
+  this.markdown = marked(prev.markdown);
+  this.body = prev.body || this.markdown;
   this.category = prev.category;
   this.publishedOn = prev.publishedOn;
   this.authorUrl = prev.authorUrl;
-  //assisted by https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Calculating_elapsed_time
-  var objDatePub = new Date(this.publishedOn);
-  this.displayRelativeDate = Math.ceil((Date.now() - objDatePub) / 86400000); //divide by milliseconds in a day
-
-
+  var context = this;
+  $.get('scripts/art-template.html', null, function(data, context) {
+    var source = $(data).html();
+    context.template = Handlebars.compile(source);
+    //var template = Handlebars.compile(data);
+  }).done(this.toHTML('#previewSection'));
 };
 
 PreviewArticle.prototype.toHTML = function(tagTarget) {
-  var source = $('#previewTemplate').html();
-  var template = Handlebars.compile(source);
-  var result = template(this);
+
+  var result = this.template(this);
   $(tagTarget).html(result);
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
@@ -35,6 +31,8 @@ PreviewArticle.prototype.toPlainText = function (textTarget) {
 
   $(textTarget).html(result);
 };
+
+var myPreview = new PreviewArticle();
 
 var newUtil = {};
 newUtil.getFormData = function () {
@@ -62,6 +60,7 @@ $('form').change(function(){
   event.preventDefault();
   var formPreview = newUtil.getFormData();
   var temp = new PreviewArticle(formPreview);
+
   temp.toHTML('#previewSection');
 });
 

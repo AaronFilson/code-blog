@@ -10,13 +10,18 @@
 
     <title>New Post</title>
     <script id="previewtemplate" type="text/x-handlebars-template">
-        <article class="previewpost" data-author={{authorSlug}} data-category={{category}}>
-          <h2>{{title}}</h2>
-          <h1>{{author}}</h1>
-          <h3 class="publishdate">{{publishedOn}}</h3>
-          <div class="post">{{{markdown}}}</div>
-          <h3 class="category">{{category}}</h3>
-        </article>
+      <div class='row'>
+        <div class='u-full-width'>
+          <article class="previewpost">
+            <h2 class="title">{{title}}</h2>
+            <p>by <a class="authorUrl" href={{{authorUrl}}}>
+              <span class="author">{{author}}</span>
+            </a>, published about <span class="publishedOn">{{displayRelativeDate}}</span> days ago.</p>
+            <p class='category'>{{category}}</p>
+            <section class="body">{{{body}}}</section>
+          </article>
+        </div>
+      </div>
     </script>
     <script id="textTemplate" type="text/x-handlebars-template">
         <p>title: {{title}}</p>
@@ -55,8 +60,10 @@
       </div>
     </form>
 
-    <div id="previewSection"></div>
 
+    <div id="previewSection"><p>Preview Section:</p></div>
+
+    <p>Submission Area, plain text:</p>
     <div id="submitArea"></div>
 
     <script src="vendor/scripts/jquery-2.1.4.js"></script>
