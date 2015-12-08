@@ -14,6 +14,9 @@ PreviewArticle.prototype.toHTML = function(tagTarget) {
   var template = Handlebars.compile(source);
   var result = template(this);
   $(tagTarget).html(result);
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
 };
 
 PreviewArticle.prototype.toPlainText = function (textTarget) {
