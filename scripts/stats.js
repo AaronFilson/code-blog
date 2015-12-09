@@ -26,9 +26,65 @@ myStats.runStats = function () {
 
 
 //need average word length across all posts
+  //first collect all of the body content
+  function collectContent(dSet) {
+    return dSet.map(function(eSet){
+      //grab the body content or markdown
+      return eSet.body ? eSet.body : eSet.markdown;
+    });
+  }
+
+  function getOutTheWords(fSet) {
+    return _.words(fSet);
+  }
+
+  function countItUp(jSet){
+    return jSet.map(function(kSet){
+      return kSet.length; //send back how many elements we have
+    })
+    .reduce(function(start, lSet){
+      return start + lSet;
+    });
+  }
+
+  var allTheBodies = collectContent(dataBlob);
+  var justTheWords = getOutTheWords(allTheBodies);
+  var totalWords = countItUp(justTheWords);
+  var averageWords = Math.floor(totalWords / justTheWords.length);
+
+  htmlBlock += '<p>The number of words is: ' + totalWords + '</p> \n';
+  htmlBlock += '<p>The average length of the words is: ' + averageWords + '</p> \n';
 
 //need array of author average word lengths
+  function getAuthorsList(mSet){
+    var authArray = myPluck(mSet);
+    var uniqAuth = myUniqFunc(authArray);
+    return uniqAuth;
+  }
 
+  function findAllAuthorWords(pSet){
+    var subtemp = dataBlob.map(function(qSet){
+      if(qSet.author === pSet) {
+        return qSet.body ? qSet.body : qSet.markdown;
+      } else {
+        return null;
+      }
+    });
+    return _.words(subtemp);
+  }
+
+  function genTheIndividualAverages(nSet){
+    nSet.forEach(function(oSet){
+      var authorsWordCount = findAllAuthorWords(oSet);
+      var wordAverage = Math.floor(countItUp(authorsWordCount) / authorsWordCount.length);
+      htmlBlock += '<p>Author: ' + oSet + ', word length average: ' + wordAverage + '</p> \n';
+
+    });
+  }
+
+  var myAuthorList = getAuthorsList(dataBlob);
+  var finished = genTheIndividualAverages(myAuthorList);
+  console.log(finished);
 //lastly, print into to the page.
   $('.statTarget').html(htmlBlock);
 };
