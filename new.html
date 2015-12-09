@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="styles/new.css">
 
     <title>New Post</title>
-    <script id="previewtemplate" type="text/x-handlebars-template">
+    <script id="previewTemplate" type="text/x-handlebars-template">
       <div class='row'>
         <div class='u-full-width'>
           <article class="previewpost">
@@ -18,7 +18,7 @@
               <span class="author">{{author}}</span>
             </a>, published about <span class="publishedOn">{{displayRelativeDate}}</span> days ago.</p>
             <p class='category'>{{category}}</p>
-            <section class="body">{{{body}}}</section>
+            <section class="body">{{{markdown}}}</section>
           </article>
         </div>
       </div>
@@ -71,5 +71,5 @@
     <script src="vendor/scripts/marked.js"></script>
     <script src="vendor/scripts/highlight.pack.js"></script>
     <script src='scripts/new.js'></script>
-      </body>
+  </body>
 </html>
