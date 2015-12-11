@@ -1,28 +1,11 @@
-blog.makeNewIndex();
-blog.toHTML();
-
-$( Util.atLoadFunction );
-
-$('nav').change(function(myEvent) {
-  myEvent.preventDefault();
-  $('select:not(.' + myEvent.target.className + ')').find('option:first').attr('selected', true);
-  if((myEvent.target.className == 'filterByCategory') || (myEvent.target.className == 'filterByAuthor')) {
-    Util.filterArticles(myEvent.target.value);
-  }
-});
-
-$('.readOn').on('click', function(clickEvent) {
-  clickEvent.preventDefault();
-  $(this).parent().find('p').show().slideDown();
-  $(this).hide();
-});
-
-$('nav').on('click', function(myEvent) {
-  if(myEvent.target.className == 'aboutMeNav') {
-    $('.aboutMe').show();
-    $('article').hide();
-  }
-  if (myEvent.target.className == 'home') {
-    Util.makeItReady();
-  }
-});
+$('#indexJs').html(' \
+  <script src="vendor/scripts/handlebars-v4.0.5.js"></script> \
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script> \
+  <script src="vendor/scripts/marked.js"></script> \
+  <script src="vendor/scripts/highlight.pack.js"></script> \
+  <script src="scripts/blog.js"></script> \
+  <script src="scripts/blogArticles.js"></script> \
+  <script src="scripts/util.js"></script>\
+  <script src="scripts/loader.js"></script>'
+);
+console.log('scripts built');

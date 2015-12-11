@@ -1,8 +1,8 @@
 
 function callTheDB(){
+  webDB.init();
   webDB.setupTables();
-  webDB.importArticlesFrom('data/hackerIpsum.json');
 }
 
 //Ready function
-$(callTheDB);
+$(callTheDB());

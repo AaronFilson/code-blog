@@ -5,7 +5,7 @@ myStats.runStats = function () {
   dataBlob = moreTests.rawData;
   //Need total articles, authors, words for story 1
   var statNumArticles = dataBlob.length;
-  var htmlBlock = '<div class="row"><div class="u-full-width>"'
+  var htmlBlock = '<div class="row"><div class="u-full-width>"';
   htmlBlock += '<p>The number of articles: ' + statNumArticles + '</p> \n';
 
   function myPluck (dArr) {
