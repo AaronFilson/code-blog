@@ -18,7 +18,12 @@ var BloggedArticle = function(rawObj) {
 
 blog.toHTML = function() {
   for (var i = 0; i < blog.artIndex.length; i++) {
-    var source = $('#blogTemplate').html();
+    if(blog.articleTemplateFromFile){
+      var source = blog.articleTemplateFromFile;
+    } else {
+      var source = $('#blogTemplate').html();
+    }
+
     var template = Handlebars.compile(source);
     var result = template(this.artIndex[i]);
     $(result).prependTo('#targetArticle');

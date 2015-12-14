@@ -8,4 +8,4 @@ $('#indexJs').html(' \
   <script src="scripts/util.js"></script>\
   <script src="scripts/loader.js"></script>'
 );
-console.log('scripts built');
+//console.log('scripts built');
