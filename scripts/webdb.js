@@ -68,6 +68,21 @@ webDB.insertRecord = function (a) {
   );
 };
 
+webDB.insertRecordNew = function (a) {
+  // insert article record into database
+  html5sql.process(
+    [
+      {
+        'sql': 'INSERT INTO articles (title, author, authorUrl, category, publishedOn, markdown) VALUES (?, ?, ?, ?, ?, ?);',
+        'data': [a.title, a.author, a.authorUrl, a.category, a.publishedOn, a.markdown],
+      }
+    ],
+    function () {
+      //console.log('Success inserting record for ' + a.title);
+    }
+  );
+};
+
 webDB.execute = function (sql, callback) {
   callback = callback || function() {};
   html5sql.process(

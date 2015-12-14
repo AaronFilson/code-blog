@@ -1,5 +1,6 @@
 
 function callTheDB(){
+  webDB.verbose(false);
   webDB.init();
   webDB.setupTables();
   console.log('end of callTheDB func.');
@@ -8,19 +9,26 @@ function callTheDB(){
 function getTemplate(){
   var tempTemp = $.get('scripts/art-template.html',
     function(data){
-      console.dir(data);
-      alert('First success');
+      //console.dir(data);
+      //alert('First success');
+      blog.articleTemplateFromFile = data;
+      console.log(blog.articleTemplateFromFile);
     })
   .done(function(data){
     console.log(data);
-    alert('Done function, second.');
+    //alert('Done function, second.');
   });
 
 }
 
 function loadBlogFromJSON(){
   $.getJSON('scripts/hackerIpsum.json')
-  .done(function(){console.log('hackerIpsum loaded from JSON.');});
+  .done(function(data){
+    console.log('hackerIpsum loaded from JSON.');
+    data.map(webDB.insertRecordNew);
+  })
+  .done(function(data){console.log('A new bit of data. ');});
+
 }
 
 //Ready function
