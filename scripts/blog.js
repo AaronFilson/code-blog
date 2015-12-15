@@ -1,4 +1,5 @@
 var blog = new Object();
+blog.articleTemplateFromFile = [];
 
 var BloggedArticle = function(rawObj) {
   this.title = rawObj.title;
@@ -17,14 +18,10 @@ var BloggedArticle = function(rawObj) {
 };
 
 blog.toHTML = function() {
-  for (var i = 0; i < blog.artIndex.length; i++) {
-    if(blog.articleTemplateFromFile){
-      var source = blog.articleTemplateFromFile;
-    } else {
-      var source = $('#blogTemplate').html();
-    }
+  var source = blog.articleTemplateFromFile;
+  var template = Handlebars.compile(source);
 
-    var template = Handlebars.compile(source);
+  for (var i = 0; i < blog.artIndex.length; i++) {
     var result = template(this.artIndex[i]);
     $(result).prependTo('#targetArticle');
   }

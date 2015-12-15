@@ -1,75 +1,66 @@
-<!-- CF 301d1 Class 05 Code Blog, by Aaron Filson -->
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Code Blog</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<title>Code Blog</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" type="text/css" href="styles/normalize.css">
-	<link rel="stylesheet" type="text/css" href="styles/skeleton.css">
-	<link rel="stylesheet" type="text/css" href="styles/index.css">
+		<link rel="stylesheet" type="text/css" href="styles/normalize.css">
+		<link rel="stylesheet" type="text/css" href="styles/skeleton.css">
+		<link rel="stylesheet" type="text/css" href="styles/index.css">
 
+	</head>
+	<body>
 
-	<script id='blogTemplate' type="text/x-handlebars-template">
-		<article>
-			<h2 class="title">{{title}}</h2>
-			<p>by <a class="authorUrl" href={{{authorUrl}}}>
-				<span class="author">{{author}}</span>
-			</a>, published about <span class="publishedOn">{{displayRelativeDate}}</span> days ago.</p>
-			<p class='category'>{{category}}</p>
-			<section class="body">{{{body}}}</section>
-			<a href='' class="readOn">Read On</a>
-		</article>
-	</script>
-</head>
-<body>
-
-	<header>
-		<div class="container">
-			<div class="row">
-				<div class="u-full-width">
-					<h1>Welcome to my blog.</h1>
-					<nav>
-						<p><a href='#' class='home'>Home</a></p>
-						<p><a href='#' class='aboutMeNav'>About</a></p>
-						<p><a href="https://twitter.com/AaronFilson">My twitter page!</a></p>
-						<p><a href="https://github.com/AaronFilson">My github page</a></p>
-						<select name="Filter by Author" class="filterByAuthor"></select>
-						<select name="Filter by Category" class="filterByCategory"></select>
-					</nav>
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="u-full-width">
+						<h1>Welcome to my blog.</h1>
+						<nav>
+							<p><a href='#' class='home'>Home</a></p>
+							<p><a href='#' class='aboutMeNav'>About</a></p>
+							<p><a href="https://twitter.com/AaronFilson">My twitter page!</a></p>
+							<p><a href="https://github.com/AaronFilson">My github page</a></p>
+							<select name="Filter by Author" class="filterByAuthor"></select>
+							<select name="Filter by Category" class="filterByCategory"></select>
+						</nav>
+					</div>
 				</div>
 			</div>
-		</div>
-	</header>
+		</header>
 
-	<main>
-		<div class="container">
-			<div class="row">
-				<div class="u-full-width" id="blogColumn">
-					<section id='targetArticle'></section>
-					<section class='aboutMe'>
-						<p>Hello everyone! I am the author of the blog you are reading, and wanted to use this
-							section to share some information about myself with you, the reader. I am a Web Developer
-							working on my skills and knowledge at Code Fellows. I hope to work on big projects! Cheers,</p>
-						<p>-Aaron</p>
-					</section>
+		<main>
+			<div class="container">
+				<div class="row">
+					<div class="u-full-width" id="blogColumn">
+						<section id='targetArticle'></section>
+						<section class='aboutMe'>
+							<p>Hello everyone! I am the author of the blog you are reading, and wanted to use this
+								section to share some information about myself with you, the reader. I am a Web Developer
+								working on my skills and knowledge at Code Fellows. I hope to work on big projects! Cheers,</p>
+							<p>-Aaron</p>
+						</section>
+					</div>
 				</div>
 			</div>
+		</main>
+
+		<div>
+			<script src="/vendor/scripts/jquery-2.1.4.js"></script>
+			<!-- <script src="/vendor/scripts/handlebars-v4.0.5.js"></script> -->
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+		  <script src="/vendor/scripts/marked.js"></script>
+		  <script src="/vendor/scripts/highlight.pack.js"></script>
+		  <script src="/vendor/scripts/page.js"></script>
+			<script src="/scripts/blog.js"></script>
+			<script src="/scripts/moreBlogs.js"></script>
+			<script src="/scripts/util.js"></script>
+			<script src="/scripts/loader.js"></script>
+			<script src="/scripts/index.js"></script>
+			<script src="/scripts/indexEvents.js"></script>
+			
 		</div>
-	</main>
 
-	<footer></footer>
-	<script id="indexJs" src="vendor/scripts/jquery-2.1.4.js"></script>
-	<script src="vendor/scripts/handlebars-v4.0.5.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
-	<script src="vendor/scripts/marked.js"></script>
-	<script src="vendor/scripts/highlight.pack.js"></script>
-	<script src="scripts/blog.js"></script>
-	<script src="scripts/blogArticles.js"></script>
-	<script src="scripts/util.js"></script>
-	<script src="scripts/loader.js"></script>
-	<script src="scripts/index.js"></script>
-
-</body>
+	</body>
 </html>
