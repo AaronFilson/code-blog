@@ -15,6 +15,7 @@ function myAsyncFunctionCalls(){
     .done(function(){
       blog.makeNewIndex();
       blog.toHTML();
+      registerIndexEvents();
       Util.atLoadFunction();
     });
   } else {
@@ -22,6 +23,7 @@ function myAsyncFunctionCalls(){
     blog.articleTemplateFromFile = cacheHandleOnIndexTemplate;
     blog.makeNewIndex();
     blog.toHTML();
+    registerIndexEvents();
     Util.atLoadFunction();
   }
 }
