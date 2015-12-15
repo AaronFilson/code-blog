@@ -1,5 +1,5 @@
 function defaultToIndex(){
-  $.load('/index.html');
+  $('window').load('/index.html');
 }
 
-page('*', defaultToIndex);
+page('/*', defaultToIndex);
