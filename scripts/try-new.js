@@ -1,69 +1,43 @@
-var PreviewArticle = function(prev){
-  this.author = prev.author;
-  this.authorSlug = prev.author.replace(/\ /g, '');
-  this.title = prev.title;
-  this.markdown = marked(prev.markdown);
-  this.body = prev.body || this.markdown;
-  this.category = prev.category;
-  this.publishedOn = prev.publishedOn;
-  this.authorUrl = prev.authorUrl;
-  var context = this;
-  $.get('scripts/art-template.html', null, function(data, context) {
-    var source = $(data).html();
-    context.template = Handlebars.compile(source);
-    //var template = Handlebars.compile(data);
-  }).done(this.toHTML('#previewSection'));
-};
+function callTheDB(){
+  webDB.verbose(false);
+  webDB.init();
+  webDB.setupTables();
+  console.log('end of callTheDB func.');
+}
 
-PreviewArticle.prototype.toHTML = function(tagTarget) {
-
-  var result = this.template(this);
-  $(tagTarget).html(result);
-  $('pre code').each(function(i, block) {
-    hljs.highlightBlock(block);
+function getTemplate(){
+  var tempTemp = $.get('scripts/art-template.html',
+    function(data){
+      //console.dir(data);
+      //alert('First success');
+      blog.articleTemplateFromFile = data;
+      console.log(blog.articleTemplateFromFile);
+    })
+  .done(function(data){
+    console.log(data);
+    //alert('Done function, second.');
   });
-};
 
-PreviewArticle.prototype.toPlainText = function (textTarget) {
-  var source = $('#textTemplate').html();
-  var template = Handlebars.compile(source);
-  var result = template(this);
+}
 
-  $(textTarget).html(result);
-};
+function loadBlogFromJSON(){
+  $.getJSON('scripts/hackerIpsum.json')
+  .done(function(data){
+    console.log('hackerIpsum loaded from JSON.');
+    data.map(webDB.insertRecordNew);
+  })
+  .done(function(data){console.log('A new bit of data. ');});
 
-var myPreview = new PreviewArticle();
+}
 
-var newUtil = {};
-newUtil.getFormData = function () {
-  var grabber = {
-    author: $('input[name=author]').val(),
-    authorUrl: $('input[name=authorUrl]').val(),
-    title: $('input[name=title]').val(),
-    category: $('input[name=category]').val(),
-    publishedOn: $('input[name=publishedOn]').val(),
-    body: $('textarea[name=body]').val(),
-    markdown: $('textarea[name=markdown]').val()
-  };
-  return (grabber);
-};
+//Ready function
+$.when(callTheDB())
+  .done(getTemplate)
+  .done(loadBlogFromJSON);
 
-//event handler section
-$('button').on('click', function(event) {
-  event.preventDefault();
-  var formClick = newUtil.getFormData();
-  var temp2 = new PreviewArticle(formClick);
-  temp2.toPlainText('#submitArea');
-});
-
-$('form').change(function(){
-  event.preventDefault();
-  var formPreview = newUtil.getFormData();
-  var temp = new PreviewArticle(formPreview);
-
-  temp.toHTML('#previewSection');
-});
-
-$('input[name=preview]').on('click', function(){
-  $('#previewSection').toggle();
-});
+  // $.ajax({
+  //   url: "test.html",
+  //   context: document.body
+  // }).done(function() {
+  //   $( this ).addClass( "done" );
+  // });

@@ -6,7 +6,7 @@ Util.makeItReady = function() {
   $('article').show();
   $('article .body :not(:first-child)').hide();
   $('.readOn').show();
-  this.createFilterMenus(blog.artIndex);
+  Util.createFilterMenus(blog.artIndex);
 };
 
 Util.atLoadFunction = function() {

@@ -5,7 +5,8 @@ myStats.runStats = function () {
   dataBlob = moreTests.rawData;
   //Need total articles, authors, words for story 1
   var statNumArticles = dataBlob.length;
-  var htmlBlock = '<p>The number of articles: ' + statNumArticles + '</p> \n';
+  var htmlBlock = '<div class="row"><div class="u-full-width>"';
+  htmlBlock += '<p>The number of articles: ' + statNumArticles + '</p> \n';
 
   function myPluck (dArr) {
     return dArr.map(function(e){return e.author;});
@@ -54,6 +55,7 @@ myStats.runStats = function () {
 
   htmlBlock += '<p>The number of words is: ' + totalWords + '</p> \n';
   htmlBlock += '<p>The average length of the words is: ' + averageWords + '</p> \n';
+  htmlBlock += '</div></div>';
 
 //need array of author average word lengths
   function getAuthorsList(mSet){
@@ -74,12 +76,18 @@ myStats.runStats = function () {
   }
 
   function genTheIndividualAverages(nSet){
-    nSet.forEach(function(oSet){
+    htmlBlock += '<div class="row"><div class="six columns">';
+    nSet.forEach(function(oSet, index){
       var authorsWordCount = findAllAuthorWords(oSet);
       var wordAverage = Math.floor(countItUp(authorsWordCount) / authorsWordCount.length);
+      if(index > (nSet.length)/2){
+        //divide the info into 6 by 6 skeleton columns
+        htmlBlock += '</div><div class="six columns">';
+      }
       htmlBlock += '<p>Author: ' + oSet + ', word length average: ' + wordAverage + '</p> \n';
 
     });
+    htmlBlock += '</div></div>';
   }
 
   var myAuthorList = getAuthorsList(dataBlob);
