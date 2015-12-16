@@ -14,11 +14,11 @@ function registerIndexEvents(){
   });
 
   $('nav').on('click', function(myEvent) {
-    if(myEvent.target.className == 'aboutMeNav') {
+    if(myEvent.target.id == 'aboutMeNav') {
       $('.aboutMe').show();
       $('article').hide();
     }
-    if (myEvent.target.className == 'home') {
+    if (myEvent.target.id == 'home') {
       Util.makeItReady();
     }
   });
