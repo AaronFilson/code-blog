@@ -18,7 +18,13 @@ repos.requestRepos = function(callback) {
 
 repos.sendInfo = function(){
   console.log('in the repos.sendInfo call back.');
-  $('.aboutMe').append($(repos.all));
+  repos.all.forEach(function(repoObj){
+    if(!repoObj.fork){
+      $('#reposSpan').append('<em>' + repoObj.name + '</em> : <a href=' +
+       repoObj.html_url + ' target="_blank"> ' + repoObj.html_url + '</a>' +
+        '<br>Description: ' + repoObj.description + ' <br><br>');
+    }
+  });
 };
 
 repos.requestRepos(repos.sendInfo);
