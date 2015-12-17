@@ -17,6 +17,7 @@ function registerIndexEvents(){
     if(myEvent.target.id == 'aboutMeNav') {
       $('.aboutMe').show();
       $('article').hide();
+      //$('.aboutMe').load('/aboutMe.html');
     }
     if (myEvent.target.id == 'home') {
       Util.makeItReady();
