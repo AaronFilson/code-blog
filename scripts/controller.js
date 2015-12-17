@@ -5,4 +5,5 @@ function defaultToIndex(){
 function aboutFunction(event){
   $('.aboutMe').show;
   $('article').hide;
+  $('.aboutMe').load('/aboutMe.html');
 }
