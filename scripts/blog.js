@@ -30,7 +30,11 @@ blog.toHTML = function() {
 blog.makeNewIndex = function(dataSource){
   //check if we are hooked up to dataSource in db, if not then load from file
   if(dataSource.length > 0){
-    blog.artIndex = new Array (dataSource);
+    console.log('dataSource is: ' + dataSource);
+    blog.artIndex = new Array();
+    for(var countTheSQLRows = 0; countTheSQLRows < dataSource.length; countTheSQLRows++){
+      blog.artIndex[countTheSQLRows] = new BloggedArticle(dataSource[countTheSQLRows]);
+    }
   } else {
     blog.artIndex = new Array ( new BloggedArticle(blog.rawData[0]) );
     for(var j = 1; j < blog.rawData.length; j++) {
