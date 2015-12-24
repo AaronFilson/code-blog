@@ -5,9 +5,9 @@ var PreviewArticle = function(prev){
   if(prev.markdown){
     this.markdown = marked(prev.markdown);
   }
-  if(prev.body){
-    this.body = prev.body;
-  }
+  // if(prev.body){
+  //   this.body = prev.body;
+  // }
   this.category = prev.category;
   this.publishedOn = prev.publishedOn;
   this.authorUrl = prev.authorUrl;
@@ -23,7 +23,7 @@ PreviewArticle.prototype.toHTML = function(tagTarget) {
   var template = Handlebars.compile(source);
   var result = template(this);
   $(tagTarget).html(result);
-  $('pre code').each(function(i, block) {
+  $('code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
 };

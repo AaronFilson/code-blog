@@ -92,3 +92,13 @@ webDB.execute = function (sql, callback) {
     }
   );
 };
+
+webDB.spamEggSausageAndSpam = function (sql, callback){
+  callback = callback || function() {};
+  html5sql.process(
+    sql,
+    function (tx, result, resultArray){
+      callback(tx, result, resultArray);
+    }
+  );
+};
